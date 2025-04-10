@@ -1,5 +1,8 @@
 <?php 
     include 'config.php'; 
+	// $cat = new Category();
+	// echo"<pre>";
+	// print_r($cat->update(2,['name'=> "ghế nằm lười",'status'=>1]));
 ?>
 <!-- /*
 * Bootstrap 5

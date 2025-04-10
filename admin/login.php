@@ -56,7 +56,5 @@
   <!-- /.login-box-body -->
 </div>
 <!-- /.login-box -->
-
-
 </body>
 </html>
