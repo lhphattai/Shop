@@ -89,7 +89,7 @@ insert into categories(name) values
 ('Ghế mầm non'),
 ('Ghế khác');
 
-insert into products(name,price,category_id,image)
+insert into product(name,price,category_id,image)
 values
 ('Nordic Chair',50,1,'product-1.png'),
 ('Kruzo Aero Chair',78,1,'product-2.png'),

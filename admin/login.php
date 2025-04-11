@@ -1,3 +1,30 @@
+<?php 
+require '../config.php';
+$errors = [];
+if(isset(($_POST['email']))){
+  $email = $_POST['email'];
+  $pass = $_POST['password'];
+  if(empty($email)){
+    $errors['email']='Email không thể để trống';
+  }
+  if(empty($pass)){
+    $errors['pass']='Password không thể để trống';
+  }
+  if(!$errors){
+    $user = Admin::checkLogin($email,$pass);
+    if($user){
+      $_SESSION['admin_login'] = $user;
+      header('location: index.php');
+    }else{
+      $errors['login_faild']='Tài khoản hoặc mật khẩu không đúng';
+    }
+  }
+    
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,14 +54,21 @@
   <!-- /.login-logo -->
   <div class="login-box-body">
     <p class="login-box-msg">Sign in to start your session</p>
-
+<?php if ($errors) : ?>
+<div class="alert alert-danger">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <?php foreach ($errors as $er): ?>
+    <li><?php echo $er; ?></li>
+    <?php endforeach;?>
+</div>
+<?php endif;?>
     <form action="" method="post">
       <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Email">
+        <input type="email" class="form-control" name="email" placeholder="Email">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password">
+        <input type="password" class="form-control"name="password" placeholder="Password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
